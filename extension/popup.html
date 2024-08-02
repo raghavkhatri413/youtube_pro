@@ -1,17 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>YouTube Pro</title>
+  <title>YouTube Pro Toggle</title>
   <style>
     body { font-family: Arial, sans-serif; }
     .container { padding: 10px; }
-    .button { padding: 10px; margin: 5px; cursor: pointer; background: #4285f4; color: white; border: none; border-radius: 5px; }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+    }
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    .slider.round {
+      border-radius: 34px;
+    }
+    .slider.round:before {
+      border-radius: 50%;
+    }
+    .button {
+      margin-top: 10px;
+      padding: 10px;
+      cursor: pointer;
+      background: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>YouTube Pro</h1>
-    <button class="button" id="openSettings">Settings</button>
+    <h1>YouTube Pro Toggle</h1>
+    <label class="switch">
+      <input type="checkbox" id="toggleButton">
+      <span class="slider round"></span>
+    </label>
+    <button class="button" id="settingsButton">Settings</button>
+    <button class="button" id="qualityButton">Increase Quality</button>
+    <button class="button" id="soundButton">Boost Sound</button>
   </div>
   <script src="popup.js"></script>
 </body>
